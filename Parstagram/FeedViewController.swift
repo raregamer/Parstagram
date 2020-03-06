@@ -16,22 +16,35 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     
     var posts = [PFObject]()
+    var refreshControl: UIRefreshControl!
+    var numberOfPosts: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onRefresh), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        numberOfPosts = 10
+        loadPosts()
+
+    }
+    
+    func loadPosts() {
+                
+        //set initial post amount
+ 
         let query = PFQuery(className: "Posts")
         query.includeKey("author")
-        query.limit = 20
-        
+        query.limit = numberOfPosts
+        query.order(byDescending: "_created_at")
         query.findObjectsInBackground { (posts, error) in
             if (posts != nil) {
                 self.posts = posts!
@@ -41,13 +54,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(posts.count)
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(self.posts)
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell")
             as! PostCellTableViewCell
@@ -65,6 +77,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
         
+    }
+    
+    @objc func onRefresh(){
+        self.tableView.reloadData()
+        print("refresh")
+        self.refreshControl.endRefreshing()
+
     }
     
 
