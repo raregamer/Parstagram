@@ -108,7 +108,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDH-RY-TOl">
-                                                    <rect key="frame" x="8" y="346" width="34" height="21"/>
+                                                    <rect key="frame" x="8" y="346" width="34" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -124,11 +124,12 @@
                                                 <constraint firstItem="Kpg-Ab-0sc" firstAttribute="leading" secondItem="UY2-9t-4OC" secondAttribute="leading" constant="15" id="Kb2-cf-CJl"/>
                                                 <constraint firstItem="Kpg-Ab-0sc" firstAttribute="top" secondItem="UY2-9t-4OC" secondAttribute="top" constant="8" id="Nsn-J9-Mhm"/>
                                                 <constraint firstItem="NDH-RY-TOl" firstAttribute="top" secondItem="Kpg-Ab-0sc" secondAttribute="bottom" constant="8" id="fkt-qL-Qbn"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NDH-RY-TOl" secondAttribute="bottom" constant="8" id="h5L-B7-RbS"/>
                                                 <constraint firstItem="NDH-RY-TOl" firstAttribute="leading" secondItem="UY2-9t-4OC" secondAttribute="leading" constant="8" id="jKA-p2-4yz"/>
                                                 <constraint firstItem="Olx-hc-aUy" firstAttribute="top" secondItem="Kpg-Ab-0sc" secondAttribute="bottom" constant="8" id="lFB-Zu-HFI"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Olx-hc-aUy" secondAttribute="bottom" constant="31" id="oRw-lY-Rdo"/>
                                                 <constraint firstAttribute="trailing" secondItem="Kpg-Ab-0sc" secondAttribute="trailing" constant="15" id="sxC-vn-exx"/>
                                                 <constraint firstItem="Olx-hc-aUy" firstAttribute="leading" secondItem="NDH-RY-TOl" secondAttribute="trailing" constant="80" id="xQ4-MC-nKq"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Olx-hc-aUy" secondAttribute="bottom" constant="8" id="xfr-dS-rDJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -137,7 +138,7 @@
                                             <outlet property="userNameLabel" destination="NDH-RY-TOl" id="TOy-YT-P3P"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" id="ntj-Ad-Zjt" userLabel="Comment View Cell" customClass="CommentTableViewCell" customModule="Parstagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CommentTableViewCell" id="ntj-Ad-Zjt" userLabel="Comment View Cell" customClass="CommentTableViewCell" customModule="Parstagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="431" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ntj-Ad-Zjt" id="UpD-D6-mkg">
@@ -170,6 +171,27 @@
                                             <outlet property="commentLabel" destination="UKN-JQ-p4g" id="XUc-aM-66V"/>
                                             <outlet property="nameLabel" destination="TCZ-hN-1br" id="BAI-99-R61"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddCommentCell" id="gYm-CQ-MxQ" userLabel="Add Comment View Cell">
+                                        <rect key="frame" x="0.0" y="475" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gYm-CQ-MxQ" id="DHV-nV-45L">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a comment..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDb-Ik-LHI">
+                                                    <rect key="frame" x="16" y="8" width="135" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UDb-Ik-LHI" firstAttribute="top" secondItem="DHV-nV-45L" secondAttribute="top" constant="8" id="DeN-QB-oaF"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UDb-Ik-LHI" secondAttribute="bottom" constant="8" id="kWh-I8-fa1"/>
+                                                <constraint firstItem="UDb-Ik-LHI" firstAttribute="leading" secondItem="DHV-nV-45L" secondAttribute="leading" constant="16" id="odg-WD-J7I"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -209,7 +231,7 @@
                                 <rect key="frame" x="16" y="354" width="343" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tU1-CM-rpO" userLabel="Submit Button">
                                 <rect key="frame" x="16" y="396" width="343" height="30"/>

@@ -10,16 +10,31 @@ import UIKit
 import AlamofireImage
 import Parse
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentField: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        commentField.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        commentField.resignFirstResponder()
+        return true
+    }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+//        commentField.resignFirstResponder()
+//    }
+    
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 
     @IBAction func onSubmitButton(_ sender: Any) {
         let post = PFObject(className: "Posts")
@@ -62,7 +77,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         let image = info[.editedImage] as! UIImage
         //resize image and scale it down
         let size = CGSize(width: 300, height: 300)
-        let scaledImage = image.af_imageScaled(to: size)
+        let scaledImage = image.af_imageAspectScaled(toFill: size)
         //display in image holder on view
         imageView.image = scaledImage
         
